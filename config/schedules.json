@@ -1,0 +1,44 @@
+{
+  "procedures": [
+    {
+      "name": "daily_sap_offline_update",
+      "description": "Ежедневная обновление sap_offline",
+      "schedule": "0 2 * * *",
+      "procedure": "sap_offline_update",
+      "params": {
+        "_date": "CURRENT_DATE"
+      },
+      "enabled": false
+    },
+    {
+      "name": "weekly_sap_offline_update",
+      "description": "Еженедельное обновление sap_offline",
+      "schedule": "0 3 * * 0",
+      "procedure": "sap_offline_update",
+      "params": {
+        "_date": "CURRENT_DATE"
+      },
+      "enabled": false
+    },
+    {
+      "name": "hourly_sap_offline_update",
+      "description": "Ежечасное обновление sap_offline",
+      "schedule": "0 * * * *",
+      "procedure": "sap_offline_update",
+      "params": {
+        "_date": "CURRENT_DATE"
+      },
+      "enabled": false
+    },
+    {
+      "name": "minutly_sap_offline_update",
+      "description": "Ежеминутное обновление sap_offline",
+      "schedule": "* * * * *",
+      "procedure": "sap_offline_update",
+      "params": {
+        "_date": "CURRENT_DATE"
+      },
+      "enabled": true
+    }
+  ]
+}
