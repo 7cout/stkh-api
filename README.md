@@ -29,22 +29,22 @@ git clone https://github.com/7cout/stkh-api.git
 npm install
 ```
 #### Настройка конфигурационных файлов
-```cmd
-# Перейти в папку config
-cd config
+```
+# Примеры конфигруационных файлов в папке \config\examples
 
-# Создать файл окружения на основе примера
-copy examples\.env.example .env
+# Создать файл окружения .env на основе примера env.example, поместить в \src
 
-# Создать файл с данными аутентификации
-copy examples\passwords.bin.example passwords.bin
+# Создать файл с данными аутентификации passwords.bin на основе примера passwords.bin.example, поместить в \config
+
+# Создать файл schedules.json с расписанием запуска задач для планировщика на основе примера schedules.json.example поместить в \config
 
 # Отредактировать файлы с помощью любого текстового редактора
 ```
 #### Настройка автозапуска с PM2
 ```cmd
 # Установить PM2 глобально
-npm install pm2 -g
+npm install pm2-windows-startup
+pm2-startup install
 
 # Запустить приложение через PM2
 pm2 start src/app.js --name "stkh-api"

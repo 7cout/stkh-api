@@ -4,9 +4,9 @@
       "name": "daily_sap_offline_update",
       "description": "Ежедневная обновление sap_offline",
       "schedule": "0 2 * * *",
-      "procedure": "sap_offline_update",
+      "procedure": "sap_offline_update", # Имя хранимой процедуры в БД
       "params": {
-        "_date": "CURRENT_DATE"
+        "_date": "CURRENT_DATE" # CURRENT_DATE автоматически подставляется текущая дата в формате YYYY-MM-DD
       },
       "enabled": false
     },
