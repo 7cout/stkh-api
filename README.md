@@ -26,6 +26,7 @@ git clone https://github.com/7cout/stkh-api.git
 ```
 #### Установка зависимостей
 ```cmd
+# В корне проекта
 npm install
 ```
 #### Настройка конфигурационных файлов
