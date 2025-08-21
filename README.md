@@ -43,7 +43,7 @@ npm install
 #### Настройка автозапуска с PM2
 ```cmd
 # Установить PM2 глобально
-npm install pm2-windows-startup
+npm install -g pm2-windows-startup
 pm2-startup install
 
 # Запустить приложение через PM2
