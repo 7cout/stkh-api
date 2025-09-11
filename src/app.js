@@ -3,6 +3,7 @@ import restify from 'restify';
 import usersRoutes from './routes/users.js';
 import offlineRoutes from './routes/offline.js';
 import schedulerRoutes from './routes/sheduler.js';
+import pongRoutes from './routes/pong.js';
 import scheduler from './utils/scheduler.js';
 import { loadPasswords } from './utils/passwords.js';
 import { errorHandler } from './middleware/auth.js';
@@ -23,6 +24,8 @@ const startServer = async () => {
     
     offlineRoutes(server);
     usersRoutes(server);
+    
+    pongRoutes(server);
 
     schedulerRoutes(server);
     

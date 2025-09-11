@@ -49,6 +49,7 @@ class DynamicScheduler {
         console.log(`Задача ${jobConfig.description} выполнена успешно`);
       } catch (error) {
         console.error(`Ошибка выполнения задачи ${jobConfig.description}:`, error);
+        this.reload();
       }
     });
   }

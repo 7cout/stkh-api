@@ -11,19 +11,23 @@ const getOfflineByDate = async (req, res) => {
     await poolConnect;
     const request = pool.request();
     
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(req.params.from) || 
-        !/^\d{4}-\d{2}-\d{2}$/.test(req.params.to)) {
+    if (!/^\d{8}$/.test(req.params.from) || 
+        !/^\d{8}$/.test(req.params.to)) {
       res.send(400, { status: 'invalid date format' });
       return;
     }
 
-    request.input('from', sql.Date, req.params.from);
-    request.input('to', sql.Date, req.params.to);
+    let from = req.params.from.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3');
+    let to = req.params.to.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3');
+
+    request.input('from', sql.Date, from);
+    request.input('to', sql.Date, to);
     
     let query;
     if (req.params.userid) {
       if (isNaN(req.params.userid)) {
         res.send(400, { status: 'invalid user ID' });
+        console.log('userid = ' + req.params.userid);
         return;
       }
       query = OFFLINE_BY_USER_QUERY;
