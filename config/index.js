@@ -1,13 +1,8 @@
 import dotenv from 'dotenv';
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 dotenv.config();
 
-const requiredEnvVars = ['DB_USER', 'DB_SERVER', 'DB_DATABASE'];
+const requiredEnvVars = ['DB_USER', 'DB_SERVER', 'DB_DATABASE', 'DB_PASSWORD', 'PASSWORDS_PATH','SERVER_PORT','SSL_KEY_PATH','SSL_CERT_PATH'];
 const missingEnvVars = requiredEnvVars.filter(varName => !process.env[varName]);
 
 if (missingEnvVars.length > 0) {
@@ -16,7 +11,7 @@ if (missingEnvVars.length > 0) {
 }
 
 export default {
-  port: process.env.DB_PORT || 3000,
+  port: process.env.DB_PORT,
   db: {
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
@@ -32,5 +27,7 @@ export default {
       }
     }
   },
-  passwordsPath: path.resolve(__dirname, process.env.PASSWORDS_PATH || '../config/passwords.bin')
+  passwords_path: process.env.PASSWORDS_PATH,
+  ssl_cert_path: process.env.SSL_CERT_PATH,
+  ssl_key_path: process.env.SSL_KEY_PATH,
 };

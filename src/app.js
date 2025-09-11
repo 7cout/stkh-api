@@ -1,5 +1,6 @@
 import config from '../config/index.js';
 import restify from 'restify';
+import fs from 'fs';
 import usersRoutes from './routes/users.js';
 import offlineRoutes from './routes/offline.js';
 import schedulerRoutes from './routes/sheduler.js';
@@ -8,10 +9,21 @@ import scheduler from './utils/scheduler.js';
 import { loadPasswords } from './utils/passwords.js';
 import { errorHandler } from './middleware/auth.js';
 
-const server = restify.createServer({
+const serverOptions = {
   name: 'stkh-activity-monitoring-api',
   version: '1.0.0'
-});
+};
+
+try {
+  serverOptions.certificate = fs.readFileSync(config.ssl_cert_path);
+  serverOptions.key = fs.readFileSync(config.ssl_key_path);
+  console.log('SSL certificates loaded successfully');
+} catch (err) {
+  console.log('Cannot load SSL certificate', err);
+  process.exit(1);
+}
+
+const server = restify.createServer(serverOptions);
 
 server.use(restify.plugins.pre.sanitizePath());
 server.use(restify.plugins.authorizationParser());

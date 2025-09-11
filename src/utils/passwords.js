@@ -5,7 +5,7 @@ let passwords = {};
 
 export const loadPasswords = async () => {
   try {
-    const data = await fs.readFile(config.passwordsPath, 'utf8');
+    const data = await fs.readFile(config.passwords_path);
     passwords = JSON.parse(data);
   } catch (err) {
     console.error('FATAL: Cannot load passwords', err);
