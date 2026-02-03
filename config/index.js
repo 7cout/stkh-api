@@ -11,7 +11,6 @@ if (missingEnvVars.length > 0) {
 }
 
 export default {
-  port: process.env.DB_PORT,
   db: {
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
@@ -27,6 +26,7 @@ export default {
       }
     }
   },
+  port: process.env.SERVER_PORT,
   passwords_path: process.env.PASSWORDS_PATH,
   ssl_cert_path: process.env.SSL_CERT_PATH,
   ssl_key_path: process.env.SSL_KEY_PATH,

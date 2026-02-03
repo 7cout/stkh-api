@@ -11,17 +11,17 @@ import { errorHandler } from './middleware/auth.js';
 
 const serverOptions = {
   name: 'stkh-activity-monitoring-api',
-  version: '1.0.0'
+  version: '1.0.0',
 };
 
-try {
-  serverOptions.certificate = fs.readFileSync(config.ssl_cert_path);
-  serverOptions.key = fs.readFileSync(config.ssl_key_path);
-  console.log('SSL certificates loaded successfully');
-} catch (err) {
-  console.log('Cannot load SSL certificate', err);
-  process.exit(1);
-}
+  try {
+    serverOptions.certificate = fs.readFileSync(config.ssl_cert_path);
+     serverOptions.key = fs.readFileSync(config.ssl_key_path);
+     console.log('SSL certificates loaded successfully');
+   } catch (err) {
+     console.log('Cannot load SSL certificate', err);
+     process.exit(1);
+   }
 
 const server = restify.createServer(serverOptions);
 
