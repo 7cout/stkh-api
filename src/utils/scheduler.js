@@ -4,6 +4,7 @@ import moment from 'moment';
 import { promises as fs } from 'fs';
 import { fileURLToPath } from 'url';
 import { runStoredProcedure } from '../db/run-procedure.js';
+import config from '../../config/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -20,6 +21,8 @@ class DynamicScheduler {
     for (const [key, value] of Object.entries(params)) {
       if (value === 'CURRENT_DATE') {
         replaced[key] = moment().format('YYYY-MM-DD');
+      } else if ( value === 'DEPARTMENT_ID' ) {
+        replaced[key] = config.department_id;
       } else {
         replaced[key] = value;
       }

@@ -1,7 +1,5 @@
 //Запрос для получения списка пользователей
 export const USERS_QUERY = `
-  DECLARE @DepartmentID INT = '2429';
-
   -- Заполняем таблицу пользователями из целевого департамента и его подразделений
   WITH HierarchyCTE AS (
     -- Анкорная часть: выбираем начальный узел
@@ -19,7 +17,7 @@ export const USERS_QUERY = `
           display_name
       END AS display_name
     FROM THier
-    WHERE ID = @DepartmentID
+    WHERE ID = @department_id
     
     UNION ALL
     

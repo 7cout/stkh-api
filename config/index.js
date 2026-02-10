@@ -30,4 +30,5 @@ export default {
   passwords_path: process.env.PASSWORDS_PATH,
   ssl_cert_path: process.env.SSL_CERT_PATH,
   ssl_key_path: process.env.SSL_KEY_PATH,
+  department_id: process.env.department_id,
 };

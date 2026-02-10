@@ -6,7 +6,8 @@
       "schedule": "0 2 * * *",
       "procedure": "sap_offline_update",
       "params": {
-        "_date": "CURRENT_DATE"
+        "_date": "CURRENT_DATE",
+        "_department_id": "DEPARTMENT_ID"
       },
       "enabled": false
     },
@@ -16,7 +17,8 @@
       "schedule": "0 3 * * 0",
       "procedure": "sap_offline_update",
       "params": {
-        "_date": "CURRENT_DATE"
+        "_date": "CURRENT_DATE",
+        "_department_id": "DEPARTMENT_ID"
       },
       "enabled": false
     },
@@ -26,7 +28,8 @@
       "schedule": "0 * * * *",
       "procedure": "sap_offline_update",
       "params": {
-        "_date": "CURRENT_DATE"
+        "_date": "CURRENT_DATE",
+        "_department_id": "DEPARTMENT_ID"
       },
       "enabled": false
     },
@@ -36,7 +39,8 @@
       "schedule": "* * * * *",
       "procedure": "sap_offline_update",
       "params": {
-        "_date": "CURRENT_DATE"
+        "_date": "CURRENT_DATE",
+        "_department_id": "DEPARTMENT_ID"
       },
       "enabled": true
     }

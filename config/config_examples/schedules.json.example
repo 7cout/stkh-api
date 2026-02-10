@@ -2,11 +2,12 @@
   "procedures": [
     {
       "name": "daily_sap_offline_update",
-      "description": "Ежедневная обновление sap_offline",
+      "description": "Ежедневное обновление sap_offline",
       "schedule": "0 2 * * *",
       "procedure": "sap_offline_update", # Имя хранимой процедуры в БД
       "params": {
-        "_date": "CURRENT_DATE" # CURRENT_DATE автоматически подставляется текущая дата в формате YYYY-MM-DD
+        "_date": "CURRENT_DATE", # CURRENT_DATE автоматически подставляется текущая дата в формате YYYY-MM-DD
+        "_department_id": "DEPARTMENT_ID" # DEPARTMENT_ID Автоматически подставится значение из переменной окружения
       },
       "enabled": false
     },
@@ -16,7 +17,8 @@
       "schedule": "0 3 * * 0",
       "procedure": "sap_offline_update",
       "params": {
-        "_date": "CURRENT_DATE"
+        "_date": "CURRENT_DATE",
+        "_department_id": "DEPARTMENT_ID"
       },
       "enabled": false
     },
@@ -26,7 +28,8 @@
       "schedule": "0 * * * *",
       "procedure": "sap_offline_update",
       "params": {
-        "_date": "CURRENT_DATE"
+        "_date": "CURRENT_DATE",
+        "_department_id": "DEPARTMENT_ID"
       },
       "enabled": false
     },
@@ -36,7 +39,8 @@
       "schedule": "* * * * *",
       "procedure": "sap_offline_update",
       "params": {
-        "_date": "CURRENT_DATE"
+        "_date": "CURRENT_DATE",
+        "_department_id": "DEPARTMENT_ID"
       },
       "enabled": true
     }
