@@ -46,10 +46,16 @@ class DynamicScheduler {
       console.log(`Запуск задачи: ${jobConfig.description}`);
       
       try {
-        const params = this.replacePlaceholders(jobConfig.params);
-        
-        await runStoredProcedure(jobConfig.procedure, params);
-        console.log(`Задача ${jobConfig.description} выполнена успешно`);
+        if (jobConfig.jobName) {
+                // Запуск задания SQL Agent
+                await startSqlAgentJob(jobConfig.jobName);
+                console.log(`Задача ${jobConfig.description}: задание "${jobConfig.jobName}" запущено`);
+            } else {
+                // Прямой вызов процедуры с параметрами
+                const params = this.replacePlaceholders(jobConfig.params || {});
+                await runStoredProcedure(jobConfig.procedure, params);
+                console.log(`Задача ${jobConfig.description} выполнена успешно`);
+            }
       } catch (error) {
         console.error(`Ошибка выполнения задачи ${jobConfig.description}:`, error);
         this.reload();

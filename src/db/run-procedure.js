@@ -24,6 +24,13 @@ async function runStoredProcedure(procedureName, params = {}) {
   }
 }
 
+async function startSqlAgentJob(jobName) {
+    await poolConnect;
+    const request = pool.request();
+    await request.query(`EXEC msdb.dbo.sp_start_job @job_name = N'${jobName}'`);
+    console.log(`Задание SQL Agent "${jobName}" запущено`);
+}
+
 function parseArgs() {
   const args = process.argv.slice(2);
   const result = {

@@ -12,36 +12,17 @@
       "enabled": false
     },
     {
-      "name": "weekly_sap_offline_update",
-      "description": "Еженедельное обновление sap_offline",
-      "schedule": "0 3 * * 0",
-      "procedure": "sap_offline_update",
-      "params": {
-        "_date": "CURRENT_DATE",
-        "_department_id": "DEPARTMENT_ID"
-      },
-      "enabled": false
+      "name": "agent_morning_sap_offline_update",
+      "description": "Утреннее обновление sap_offline (06:00 за вчерашний день)",
+      "schedule": "0 6 * * *",
+      "jobName": "SapOfflineUpdate_Morning",
+      "enabled": true
     },
     {
-      "name": "hourly_sap_offline_update",
-      "description": "Ежечасное обновление sap_offline",
-      "schedule": "0 * * * *",
-      "procedure": "sap_offline_update",
-      "params": {
-        "_date": "CURRENT_DATE",
-        "_department_id": "DEPARTMENT_ID"
-      },
-      "enabled": false
-    },
-    {
-      "name": "minutly_sap_offline_update",
-      "description": "Ежеминутное обновление sap_offline",
-      "schedule": "* * * * *",
-      "procedure": "sap_offline_update",
-      "params": {
-        "_date": "CURRENT_DATE",
-        "_department_id": "DEPARTMENT_ID"
-      },
+      "name": "agent_daily_sap_offline_update",
+      "description": "Ежедневное обновление sap_offline (каждые 3 часа с 01:45)",
+      "schedule": "45 1,4,7,10,13,16,19,22 * * *",
+      "jobName": "SapOfflineUpdate_Daily",
       "enabled": true
     }
   ]
